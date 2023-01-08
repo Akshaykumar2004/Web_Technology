@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>
+            Activity 06-Forms
+        </title>
+        <style>
+            form {
+              width: 500px;
+              margin: 0 auto;
+              padding: 20px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+            label {
+              display: block;
+              margin-bottom: 10px;
+            }
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            input[type="date"] {
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+            input[type="submit"] {
+              background-color: #4caf50;
+              color: white;
+              padding: 12px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+            input[type="submit"]:hover {
+              background-color: #45a049;
+            }
+            h1 {
+            background: linear-gradient(to right, rgb(23, 23, 36), rgb(177, 169, 177));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* text-shadow: 2px 2px black; */
+            text-align:center;
+}
+          </style>
+          
+    </head>
+    <body>
+        <h1>HOTEL REGESTRATION FORM</h1>
+        <form action="/process-registration" method="post" onsubmit="return validateForm()">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" required><br>
+            <label for="arrival">Arrival Date:</label><br>
+            <input type="date" id="arrival" name="arrival" required><br>
+            <label for="departure">Departure Date:</label><br>
+            <input type="date" id="departure" name="departure" required><br>
+            <label for="num_guests">Number of Guests:</label><br>
+            <input type="number" id="num_guests" name="num_guests" required><br><br>
+            <input type="submit" value="Submit">
+          </form> 
+          
+<script>
+    function validateForm() {
+      // get the value of the email field
+      var email = document.getElementById('email').value;
+  
+      // check if the email is valid
+      if (validateEmail(email)) {
+        // email is valid, submit the form
+        return true;
+      } else {
+        // email is invalid, display an error message
+        alert('Please enter a valid email address');
+        return false;
+      }
+
+      var phone = document.getElementById('phone').value;
+
+// check if the phone is valid
+if (validatePhone(phone)) {
+  // phone is valid, submit the form
+  return true;
+} else {
+  // phone is invalid, display an error message
+  alert('Please enter a valid phone number');
+  return false;
+}
+}
+    
+  
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    function validatePhone(phone) {
+    var re = /^\(?\d{3}\)?[- .]?\d{3}[- .]?\d{4}$/;
+    return re.test(phone);
+  }
+  </script>
+    </body>
+</html>
